@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="547.0" prefWidth="856.0" style="-fx-background-color: #696355;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hostel.controller.KeyMonyFormController">
+   <children>
+      <Label layoutX="-1.0" layoutY="-3.0" prefHeight="552.0" prefWidth="350.0" style="-fx-background-color: black;" />
+      <Label layoutX="39.0" layoutY="130.0" text="Student Id" textFill="WHITE" />
+      <TextField fx:id="txtLastPayment" layoutX="119.0" layoutY="185.0" prefHeight="25.0" prefWidth="194.0" />
+      <Label layoutX="41.0" layoutY="189.0" text="Last Payment" textFill="WHITE" />
+      <TextField fx:id="txtRoomId" layoutX="493.0" layoutY="118.0" prefHeight="25.0" prefWidth="194.0" />
+      <Label layoutX="441.0" layoutY="122.0" text="Room Id" />
+      <TextField fx:id="txtPay" layoutX="119.0" layoutY="248.0" prefHeight="25.0" prefWidth="194.0" />
+      <Label layoutX="41.0" layoutY="252.0" text="pay" textFill="WHITE" />
+      <JFXButton layoutX="724.0" layoutY="439.0" onAction="#btnPayOnAction" prefHeight="36.0" prefWidth="71.0" style="-fx-background-color: red;" text="PAY" />
+      <TableView fx:id="tblBill" layoutX="449.0" layoutY="169.0" onMousePressed="#MousePressedOnAction" prefHeight="200.0" prefWidth="374.0">
+        <columns>
+          <TableColumn fx:id="colPayId" prefWidth="75.0" text="Pay Id" />
+          <TableColumn fx:id="colLastPayment" prefWidth="83.0" text="LastPayment" />
+            <TableColumn fx:id="colBalance" prefWidth="75.0" text="Balance" />
+            <TableColumn fx:id="colResd" prefWidth="76.0" text="ResId" />
+            <TableColumn fx:id="colKeyMoney" prefWidth="66.0" text="KeyMoney" />
+        </columns>
+      </TableView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#01f700" height="549.0" stroke="BLACK" strokeType="INSIDE" width="7.0" />
+      <TextField fx:id="txtStudentId" layoutX="119.0" layoutY="127.0" prefHeight="25.0" prefWidth="194.0" />
+      <Label layoutX="112.0" layoutY="33.0" text="Bill" textFill="#00ff04">
+         <font>
+            <Font name="Constantia Bold" size="58.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

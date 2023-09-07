@@ -1,0 +1,19 @@
+.button:hover{
+    -fx-border-radius-color:#0652DD;
+    -fx-background-radius: 600px 0px 500px 0px;
+    -fx-text-fill: red;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.button2{
+    -fx-border-radius-color:#0652DD;
+    -fx-background-radius: 600px 0px 500px 0px;
+}
+.button3{
+    -fx-border-radius-color:#0652DD;
+    -fx-background-radius: 700px 0px 0px 700px;
+}
+.text-field{
+    -fx-text-fill: red;
+    -fx-font: red;
+
+}

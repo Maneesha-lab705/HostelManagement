@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="540.0" prefWidth="856.0" style="-fx-background-color: #696355;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hostel.controller.StudentReservationFormController">
+   <children>
+      <Text fill="WHITE" layoutX="45.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration">
+         <font>
+            <Font name="Javanese Text" size="24.0" />
+         </font>
+      </Text>
+      <AnchorPane fx:id="root2" layoutX="45.0" layoutY="54.0" onMouseEntered="#OnMEnterdOnAction" onMouseExited="#OnMExitedOnAction" prefHeight="457.0" prefWidth="796.0" style="-fx-background-color: white;">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#171717" height="42.0" stroke="BLACK" strokeType="INSIDE" width="796.0" />
+            <Label layoutX="7.0" layoutY="-11.0" prefHeight="43.0" prefWidth="234.0" text="FILL ALL INFO" textFill="WHITE">
+               <font>
+                  <Font name="Javanese Text" size="23.0" />
+               </font>
+            </Label>
+            <Label layoutX="20.0" layoutY="80.0" prefHeight="26.0" prefWidth="60.0" text="Student Id" />
+            <Label layoutX="21.0" layoutY="135.0" prefHeight="26.0" prefWidth="37.0" text="Name" />
+            <TextField fx:id="txtName" layoutX="143.0" layoutY="137.0" prefHeight="25.0" prefWidth="260.0" />
+            <Label layoutX="20.0" layoutY="187.0" prefHeight="26.0" prefWidth="60.0" text="Address" />
+            <TextField fx:id="txtAddress" layoutX="143.0" layoutY="187.0" prefHeight="25.0" prefWidth="260.0" />
+            <Label layoutX="20.0" layoutY="236.0" prefHeight="26.0" prefWidth="73.0" text="Contact" />
+            <TextField fx:id="txtContact" layoutX="143.0" layoutY="236.0" prefHeight="25.0" prefWidth="260.0" />
+            <Label layoutX="21.0" layoutY="277.0" prefHeight="26.0" prefWidth="54.0" text="Dob" />
+            <DatePicker fx:id="picDate" layoutX="143.0" layoutY="277.0" />
+            <Label layoutX="21.0" layoutY="326.0" prefHeight="26.0" prefWidth="73.0" text="Gender" />
+            <JFXComboBox fx:id="comGender" layoutX="143.0" layoutY="320.0" prefHeight="25.0" prefWidth="73.0" unFocusColor="RED" />
+            <JFXButton fx:id="btnSave" layoutX="22.0" layoutY="383.0" onAction="#btnSaveOnAction" prefHeight="33.0" prefWidth="73.0" style="-fx-background-color: #1aed2f;" text="SAVE" />
+            <Label layoutX="499.0" layoutY="107.0" text="RES-ID" />
+            <Label layoutX="499.0" layoutY="225.0" text="ROOM TYPE" />
+            <Label layoutX="500.0" layoutY="326.0" text="AMOUNT" />
+            <DatePicker fx:id="txtDate" layoutX="571.0" layoutY="138.0" prefHeight="25.0" prefWidth="189.0" />
+            <JFXComboBox fx:id="comRoomType" layoutX="571.0" layoutY="211.0" onAction="#RoomTypeOnAction" prefHeight="11.0" prefWidth="189.0" unFocusColor="RED" />
+            <TextField fx:id="txtAmount" layoutX="571.0" layoutY="321.0" onKeyReleased="#TextAmountOnAction" prefHeight="25.0" prefWidth="189.0" />
+            <DatePicker fx:id="txtEndDate" layoutX="571.0" layoutY="176.0" prefHeight="25.0" prefWidth="189.0" />
+            <Label layoutX="499.0" layoutY="183.0" text="END DATE" />
+            <Label layoutX="499.0" layoutY="144.0" text="DATE" />
+            <Label layoutX="597.0" layoutY="57.0" text="SELECT YOUR ROOM">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Line endX="9.0" endY="305.0" layoutX="470.0" layoutY="80.0" startX="9.0" startY="3.0" />
+            <TextField fx:id="txtStId" layoutX="142.0" layoutY="78.0" onAction="#StIDOnAction" prefHeight="25.0" prefWidth="260.0" />
+            <TextField fx:id="txtResId" layoutX="570.0" layoutY="103.0" prefHeight="25.0" prefWidth="189.0" />
+            <Label layoutX="502.0" layoutY="262.0" text="ROOM ID" />
+            <JFXComboBox fx:id="comRoomId" layoutX="572.0" layoutY="247.0" prefHeight="11.0" prefWidth="189.0" unFocusColor="RED" />
+            <TextField fx:id="txtBalance" layoutX="572.0" layoutY="359.0" prefHeight="25.0" prefWidth="189.0" />
+            <Label layoutX="500.0" layoutY="359.0" text="BALANCE" />
+            <TextField fx:id="txtKeyMony" layoutX="570.0" layoutY="284.0" prefHeight="25.0" prefWidth="189.0" />
+            <Label layoutX="502.0" layoutY="293.0" text="KEY MONEY" />
+         </children>
+      </AnchorPane>
+      <JFXButton layoutX="770.0" layoutY="15.0" style="-fx-background-color: RED;" text="BACK" textFill="#390404" />
+   </children>
+</AnchorPane>

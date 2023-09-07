@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="547.0" prefWidth="856.0" style="-fx-background-color: #696355;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hostel.controller.RoomFromContrller">
+   <children>
+      <Label layoutX="-6.0" layoutY="-2.0" prefHeight="547.0" prefWidth="412.0" style="-fx-background-color: black;" />
+      <Label layoutX="71.0" layoutY="104.0" text="ROOM TYPE ID" textFill="WHITE" />
+      <Label layoutX="72.0" layoutY="178.0" text="KEY MONEY" textFill="WHITE" />
+      <Label layoutX="71.0" layoutY="144.0" text="ROOM TYPE" textFill="WHITE" />
+      <Label layoutX="71.0" layoutY="258.0" text="QTY" textFill="WHITE" />
+      <JFXComboBox fx:id="comRoomTypeid" focusColor="WHITE" layoutX="161.0" layoutY="98.0" onAction="#comRoomTypeOnAction" prefHeight="25.0" prefWidth="218.0" style="-fx-background-color: white;" unFocusColor="RED" />
+      <TextField fx:id="txtKeyMoney" layoutX="161.0" layoutY="174.0" prefHeight="25.0" prefWidth="210.0" />
+      <TextField fx:id="txtQty" layoutX="160.0" layoutY="254.0" prefHeight="25.0" prefWidth="66.0" />
+      <Label layoutX="52.0" layoutY="25.0" text="ROOM DETAILS" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tblRoom" layoutX="456.0" layoutY="51.0" prefHeight="382.0" prefWidth="324.0">
+         <columns>
+            <TableColumn fx:id="colRoomId" prefWidth="92.0" text="ROOM ID" />
+            <TableColumn fx:id="colType" prefWidth="81.0" text="TYPE" />
+            <TableColumn fx:id="colKeyMony" prefWidth="75.0" text="KEY MONEY" />
+            <TableColumn fx:id="colQty" prefWidth="74.0" text="QTY" />
+         </columns>
+      </TableView>
+      <JFXButton fx:id="btnSave" layoutX="41.0" layoutY="400.0" onAction="#SaveOnAction" style="-fx-background-color: white;" text="SAVE" />
+      <JFXButton fx:id="btnUpdate" layoutX="119.0" layoutY="400.0" onAction="#updateOnAction" style="-fx-background-color: white;" text="UPDATE" />
+      <JFXButton fx:id="btnDelete" layoutX="208.0" layoutY="398.0" onAction="#deleteOnAction" style="-fx-background-color: white;" text="DELETE" />
+      <JFXButton fx:id="btnSerch" layoutX="294.0" layoutY="398.0" onAction="#serchOnAction" style="-fx-background-color: white;" text="SERCH" />
+      <TextField fx:id="txtRoomId" layoutX="161.0" layoutY="214.0" prefHeight="25.0" prefWidth="210.0" />
+      <Label layoutX="68.0" layoutY="218.0" text="ROOM ID" textFill="WHITE" />
+      <TextField fx:id="txtRoomType" layoutX="161.0" layoutY="140.0" prefHeight="25.0" prefWidth="210.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00e51a" height="547.0" layoutX="-2.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="12.0" />
+   </children>
+</AnchorPane>
