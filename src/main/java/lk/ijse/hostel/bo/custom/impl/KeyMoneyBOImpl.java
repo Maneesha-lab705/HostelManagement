@@ -1,16 +1,12 @@
 package lk.ijse.hostel.bo.custom.impl;
 
 import lk.ijse.hostel.Dto.BillDTO;
-import lk.ijse.hostel.Dto.ReservationDTO;
-import lk.ijse.hostel.Dto.RoomDto;
-import lk.ijse.hostel.Dto.StudentDTO;
 import lk.ijse.hostel.bo.custom.KeyMoneyBO;
 import lk.ijse.hostel.dao.custom.BillDAO;
 import lk.ijse.hostel.dao.custom.ReservationDao;
 import lk.ijse.hostel.dao.custom.impl.BillDAOImpl;
 import lk.ijse.hostel.dao.custom.impl.ReservationDaoImpl;
 import lk.ijse.hostel.entity.Bill;
-import lk.ijse.hostel.entity.Reservation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +19,7 @@ public class KeyMoneyBOImpl implements KeyMoneyBO {
         List<BillDTO> billDTOS = new ArrayList<>();
         List<Bill>bills = billDAO.getAllPayment();
         for (Bill bill : bills){
-            billDTOS.add(new BillDTO(bill.getPaymentId(),bill.getKeymony(),bill.getAmount(),bill.getBalance(),new ReservationDTO(bill.getReservation().getRes_id())));
+            billDTOS.add(new BillDTO(bill.getPaymentId(),bill.getKeymony(),bill.getAmount(),bill.getBalance()));
         }
         return billDTOS;
     }
@@ -34,8 +30,8 @@ public class KeyMoneyBOImpl implements KeyMoneyBO {
     }
 
     @Override
-    public String getRoomId(String resId) {
-        return reservationDao.getRoomId(resId);
+    public String getRoomId(String paymentId) {
+        return reservationDao.getRoomId(paymentId);
     }
 
     @Override

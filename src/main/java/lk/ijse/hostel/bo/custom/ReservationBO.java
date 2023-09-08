@@ -28,6 +28,9 @@ public interface ReservationBO {
 
     boolean delete(String id);
 
+    String getResId();
+
+
 
 //
 //

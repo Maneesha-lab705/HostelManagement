@@ -28,23 +28,23 @@
             </Label>
             <Label layoutX="20.0" layoutY="80.0" prefHeight="26.0" prefWidth="60.0" text="Student Id" />
             <Label layoutX="21.0" layoutY="135.0" prefHeight="26.0" prefWidth="37.0" text="Name" />
-            <TextField fx:id="txtName" layoutX="143.0" layoutY="137.0" prefHeight="25.0" prefWidth="260.0" />
+            <TextField fx:id="txtName" layoutX="143.0" layoutY="137.0" onAction="#namaOnAction" prefHeight="25.0" prefWidth="260.0" />
             <Label layoutX="20.0" layoutY="187.0" prefHeight="26.0" prefWidth="60.0" text="Address" />
-            <TextField fx:id="txtAddress" layoutX="143.0" layoutY="187.0" prefHeight="25.0" prefWidth="260.0" />
+            <TextField fx:id="txtAddress" layoutX="143.0" layoutY="187.0" onAction="#AddressOnAction" prefHeight="25.0" prefWidth="260.0" />
             <Label layoutX="20.0" layoutY="236.0" prefHeight="26.0" prefWidth="73.0" text="Contact" />
-            <TextField fx:id="txtContact" layoutX="143.0" layoutY="236.0" prefHeight="25.0" prefWidth="260.0" />
+            <TextField fx:id="txtContact" layoutX="143.0" layoutY="236.0" onAction="#ContactOnAction" prefHeight="25.0" prefWidth="260.0" />
             <Label layoutX="21.0" layoutY="277.0" prefHeight="26.0" prefWidth="54.0" text="Dob" />
-            <DatePicker fx:id="picDate" layoutX="143.0" layoutY="277.0" />
+            <DatePicker fx:id="picDate" layoutX="143.0" layoutY="277.0" onAction="#DobOnAction" />
             <Label layoutX="21.0" layoutY="326.0" prefHeight="26.0" prefWidth="73.0" text="Gender" />
-            <JFXComboBox fx:id="comGender" layoutX="143.0" layoutY="320.0" prefHeight="25.0" prefWidth="73.0" unFocusColor="RED" />
+            <JFXComboBox fx:id="comGender" layoutX="143.0" layoutY="320.0" onAction="#GenderOnAction" prefHeight="25.0" prefWidth="73.0" unFocusColor="RED" />
             <JFXButton fx:id="btnSave" layoutX="22.0" layoutY="383.0" onAction="#btnSaveOnAction" prefHeight="33.0" prefWidth="73.0" style="-fx-background-color: #1aed2f;" text="SAVE" />
             <Label layoutX="499.0" layoutY="107.0" text="RES-ID" />
             <Label layoutX="499.0" layoutY="225.0" text="ROOM TYPE" />
             <Label layoutX="500.0" layoutY="326.0" text="AMOUNT" />
-            <DatePicker fx:id="txtDate" layoutX="571.0" layoutY="138.0" prefHeight="25.0" prefWidth="189.0" />
+            <DatePicker fx:id="txtDate" layoutX="571.0" layoutY="138.0" onAction="#DateOnAction" prefHeight="25.0" prefWidth="189.0" />
             <JFXComboBox fx:id="comRoomType" layoutX="571.0" layoutY="211.0" onAction="#RoomTypeOnAction" prefHeight="11.0" prefWidth="189.0" unFocusColor="RED" />
             <TextField fx:id="txtAmount" layoutX="571.0" layoutY="321.0" onKeyReleased="#TextAmountOnAction" prefHeight="25.0" prefWidth="189.0" />
-            <DatePicker fx:id="txtEndDate" layoutX="571.0" layoutY="176.0" prefHeight="25.0" prefWidth="189.0" />
+            <DatePicker fx:id="txtEndDate" layoutX="571.0" layoutY="176.0" onAction="#EndDateOnAction" prefHeight="25.0" prefWidth="189.0" />
             <Label layoutX="499.0" layoutY="183.0" text="END DATE" />
             <Label layoutX="499.0" layoutY="144.0" text="DATE" />
             <Label layoutX="597.0" layoutY="57.0" text="SELECT YOUR ROOM">
@@ -54,12 +54,12 @@
             </Label>
             <Line endX="9.0" endY="305.0" layoutX="470.0" layoutY="80.0" startX="9.0" startY="3.0" />
             <TextField fx:id="txtStId" layoutX="142.0" layoutY="78.0" onAction="#StIDOnAction" prefHeight="25.0" prefWidth="260.0" />
-            <TextField fx:id="txtResId" layoutX="570.0" layoutY="103.0" prefHeight="25.0" prefWidth="189.0" />
+            <TextField fx:id="txtResId" layoutX="570.0" layoutY="103.0" onAction="#ResIdOnAction" prefHeight="25.0" prefWidth="189.0" />
             <Label layoutX="502.0" layoutY="262.0" text="ROOM ID" />
             <JFXComboBox fx:id="comRoomId" layoutX="572.0" layoutY="247.0" prefHeight="11.0" prefWidth="189.0" unFocusColor="RED" />
             <TextField fx:id="txtBalance" layoutX="572.0" layoutY="359.0" prefHeight="25.0" prefWidth="189.0" />
             <Label layoutX="500.0" layoutY="359.0" text="BALANCE" />
-            <TextField fx:id="txtKeyMony" layoutX="570.0" layoutY="284.0" prefHeight="25.0" prefWidth="189.0" />
+            <TextField fx:id="txtKeyMony" layoutX="570.0" layoutY="284.0" onAction="#KemonyeOnAction" prefHeight="25.0" prefWidth="189.0" />
             <Label layoutX="502.0" layoutY="293.0" text="KEY MONEY" />
          </children>
       </AnchorPane>

@@ -15,7 +15,7 @@ public class BillDTO {
     private double keymony;
     private double amount;
     private double balance;
-    private ReservationDTO reservation;
+//    private ReservationDTO reservation;
 
     public BillDTO(String payId, double newPayment, double newBalance) {
         this.paymentId=payId;

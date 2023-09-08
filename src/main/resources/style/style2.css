@@ -10,7 +10,7 @@
 }
 .button3{
     -fx-border-radius-color:#0652DD;
-    -fx-background-radius: 700px 0px 0px 700px;
+    -fx-background-radius: 0px 0px 0px 500px;
 }
 .text-field{
     -fx-text-fill: red;

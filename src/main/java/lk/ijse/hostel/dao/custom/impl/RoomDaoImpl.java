@@ -26,7 +26,8 @@ public class RoomDaoImpl implements RoomDao {
     public boolean delete(Room room) {
         Session session= FactoryConfiguration.getInstance().getSession();
         Transaction transaction=session.beginTransaction();
-        session.remove(room);
+        Room room1 = session.get(Room.class,room.getRoom_id());
+        session.remove(room1);
         transaction.commit();
         session.close();
 

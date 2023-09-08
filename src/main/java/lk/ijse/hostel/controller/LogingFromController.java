@@ -84,6 +84,13 @@ public class LogingFromController implements Initializable {
 //        scene.setFill(Color.TRANSPARENT);
         stage.centerOnScreen();
     }
+
+    public void userOnAction(ActionEvent actionEvent) {
+    }
+
+    public void passwordOnAction(ActionEvent actionEvent) {
+
+    }
 //    private void createDatabase() {
 //        Session session = FactoryConfiguration.getInstance().getSession();
 //        Transaction transaction = session.beginTransaction();

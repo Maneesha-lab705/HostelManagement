@@ -9,7 +9,7 @@ public interface KeyMoneyBO {
 
     String getStudentId(String resId);
 
-    String getRoomId(String resId);
+    String getRoomId(String paymentId);
 
     boolean payed(BillDTO billDTO);
 }

@@ -2,6 +2,7 @@ package lk.ijse.hostel.dao.custom.impl;
 
 import lk.ijse.hostel.Dto.StudentDTO;
 import lk.ijse.hostel.dao.custom.StudentDao;
+import lk.ijse.hostel.entity.Bill;
 import lk.ijse.hostel.entity.Reservation;
 import lk.ijse.hostel.entity.Room;
 import lk.ijse.hostel.entity.Student;
@@ -29,7 +30,10 @@ public class StudentDaoImpl implements StudentDao {
     public boolean delete(Student student) {
         Session session= FactoryConfiguration.getInstance().getSession();
         Transaction transaction=session.beginTransaction();
-        session.remove(student);
+        Student remove=session.get(Student.class,student.getStudentId());
+        session.remove(remove);
+        Bill bill=session.get(Bill.class,student.getStudentId());
+        session.remove(bill);
         transaction.commit();
         session.close();
 

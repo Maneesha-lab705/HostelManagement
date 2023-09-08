@@ -67,7 +67,7 @@ public class KeyMonyFormController implements Initializable {
         colPayId.setCellValueFactory(new PropertyValueFactory<>("paymentId"));
         colLastPayment.setCellValueFactory(new PropertyValueFactory<>("amount"));
         colBalance.setCellValueFactory(new PropertyValueFactory<>("balance"));
-        colResd.setCellValueFactory(new PropertyValueFactory<>("resId"));
+        //colResd.setCellValueFactory(new PropertyValueFactory<>("resId"));
         colKeyMoney.setCellValueFactory(new PropertyValueFactory<>("keymony"));
 
 
@@ -81,8 +81,7 @@ public class KeyMonyFormController implements Initializable {
                     billDTO.getPaymentId(),
                     billDTO.getKeymony(),
                     billDTO.getAmount(),
-                    billDTO.getBalance(),
-                    billDTO.getReservation().getRes_id()
+                    billDTO.getBalance()
             ));
         }
         tblBill.setItems(obList);
@@ -115,9 +114,8 @@ public class KeyMonyFormController implements Initializable {
             BillTM selectedItem = tblBill.getSelectionModel().getSelectedItem();
             if (selectedItem != null) {
                 txtLastPayment.setText(String.valueOf(selectedItem.getAmount()));
-                String studentId = keyMoneyBO.getStudentId(selectedItem.getResId());
-                txtStudentId.setText(studentId);
-                String roomId =keyMoneyBO.getRoomId(selectedItem.getResId());
+                txtStudentId.setText(selectedItem.getPaymentId());
+                String roomId =keyMoneyBO.getRoomId(selectedItem.getPaymentId());
                 txtRoomId.setText(roomId);
             }
         }

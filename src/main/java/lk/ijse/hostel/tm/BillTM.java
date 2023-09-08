@@ -12,6 +12,4 @@ public class BillTM {
     private double keymony;
     private double amount;
     private double balance;
-    private String resId;
-
 }

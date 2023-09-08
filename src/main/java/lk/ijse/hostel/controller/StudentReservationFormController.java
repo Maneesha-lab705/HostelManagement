@@ -34,23 +34,8 @@ public class StudentReservationFormController implements Initializable {
     ReservationBO reservationBO=new ReservationBOImpl();
     RoomBO roomBO =new RoomBOImpl();
 
-
-
-    @FXML
-    private JFXButton btnDelete;
-
     @FXML
     private JFXButton btnSave;
-
-    @FXML
-    private JFXButton btnSerch;
-
-    @FXML
-    private JFXButton btnUpdate;
-
-
-    @FXML
-    private JFXButton btnBill;
 
     @FXML
     private JFXComboBox<String> comGender;
@@ -85,11 +70,6 @@ public class StudentReservationFormController implements Initializable {
     @FXML
     private TextField txtResId;
 
-
-    @FXML
-    private TextField txtKeyMoney;
-
-
     @FXML
     private TextField txtKeyMony;
 
@@ -99,15 +79,8 @@ public class StudentReservationFormController implements Initializable {
     @FXML
     private TextField txtAmount;
 
-
-    @FXML
-    private TextField txtRoomQty;
-
     @FXML
     private TextField txtStId;
-
-    @FXML
-    private TextField txtRoomId;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -144,7 +117,8 @@ public class StudentReservationFormController implements Initializable {
     }
 
     private void loadResId() {
-//        String resIds =reservationBO.getresId();
+        String resId=reservationBO.getResId();
+        txtResId.setText(resId);
 
     }
 
@@ -158,20 +132,16 @@ public class StudentReservationFormController implements Initializable {
 
     }
 
-    @FXML
-    void StIDOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnDeleteOnAction(ActionEvent event) {
-        String id =txtStId.getText();
-        boolean isDelete=reservationBO.delete(new StudentDTO(id));
-        if (isDelete){
-            new Alert(Alert.AlertType.CONFIRMATION,"is delete").show();
-        }
-
-    }
+//
+//    @FXML
+//    void btnDeleteOnAction(ActionEvent event) {
+//        String id =txtStId.getText();
+//        boolean isDelete=reservationBO.delete(new StudentDTO(id));
+//        if (isDelete){
+//            new Alert(Alert.AlertType.CONFIRMATION,"is delete").show();
+//        }
+//
+//    }
 
     private void loadBillId() {
 
@@ -199,13 +169,10 @@ public class StudentReservationFormController implements Initializable {
                 Double balance = Double.valueOf(txtBalance.getText());
                 Double keymony = Double.valueOf(txtKeyMony.getText());
 
-                String billId = reservationBO.genarateenxtBillId();
-
-
                 StudentDTO studentDTO = new StudentDTO(sId, name, address, contact, dob, gender);
                 RoomDto roomDto = new RoomDto(roomid);
                 ReservationDTO reservationDTO = new ReservationDTO(resId, date, endDate, roomType, roomDto, studentDTO);
-                BillDTO billDTO = new BillDTO(billId, keymony, amount, balance, reservationDTO);
+                BillDTO billDTO = new BillDTO(sId, keymony, amount, balance);
 
 
                 boolean isSave = reservationBO.save(reservationDTO, roomDto, studentDTO, billDTO);
@@ -224,7 +191,6 @@ public class StudentReservationFormController implements Initializable {
             return true;
         }else {
             txtStId.setBackground(Background.fill(Color.RED));
-           // lblcheckId.setText("Incorrect Id!!");
         }
         return false;
     }
@@ -233,9 +199,7 @@ public class StudentReservationFormController implements Initializable {
         if (txtResId.getText().matches("^[R0-9]{4}$")) {
             return true;
         }else {
-            txtResId.setBackground(Background.fill(Color.RED));
-            // lblcheckId.setText("Incorrect Id!!");
-        }
+            txtResId.setBackground(Background.fill(Color.RED));}
         return false;
     }
     private void Clear() {
@@ -244,45 +208,32 @@ public class StudentReservationFormController implements Initializable {
         txtAddress.clear();
         txtContact.clear();
         picDate.cancelEdit();
-        comGender.getSelectionModel().clearSelection();
+        comGender.setPromptText("");
 
         txtResId.clear();
-        comRoomType.getSelectionModel().clearSelection();
-        comRoomId.getSelectionModel().clearSelection();
+        comRoomType.setPromptText("");
+        comRoomId.setPromptText("");
 
         txtAmount.getText();
         txtBalance.getText();
         txtKeyMony.getText();
     }
 
-    @FXML
-    void btnSerchOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnUpdateOnAction(ActionEvent event) {
-
-    }
-
-
     public void RoomTypeOnAction(ActionEvent actionEvent) {
-        if (   comRoomType.getSelectionModel().getSelectedItem().equals("RM-1324")){
+        if (comRoomType.getSelectionModel().getSelectedItem().equals("RM-1324")){
             txtKeyMony.setText("3100.00");
         }
-        if (   comRoomType.getSelectionModel().getSelectedItem().equals("RM-5464")){
+        if (comRoomType.getSelectionModel().getSelectedItem().equals("RM-5464")){
             txtKeyMony.setText("6500.00");
         }
-        if (   comRoomType.getSelectionModel().getSelectedItem().equals("RM-7896")){
+        if (comRoomType.getSelectionModel().getSelectedItem().equals("RM-7896")){
             txtKeyMony.setText("8900.00");
         }
-        if (   comRoomType.getSelectionModel().getSelectedItem().equals("RM-0093")){
+        if (comRoomType.getSelectionModel().getSelectedItem().equals("RM-0093")){
             txtKeyMony.setText("16000.00");
         }
         ObservableList<String> observableList =FXCollections.observableArrayList();
         List<String> ids =roomBO.getRoomIds(comRoomType.getSelectionModel().getSelectedItem());
-        System.out.println(comRoomType.getSelectionModel().getSelectedItem());
-//        List<String> qty =roomBO.getQty(comRoomType.getSelectionModel().getSelectedItem());
 
         for (String id :ids){
             observableList.add(id);
@@ -297,6 +248,49 @@ public class StudentReservationFormController implements Initializable {
 
         double balance=keMony-amount;
         txtBalance.setText(String.valueOf(balance));
+
+    }
+    @FXML
+    void StIDOnAction(ActionEvent event) {
+        txtName.requestFocus();
+    }
+
+    public void namaOnAction(ActionEvent actionEvent) {
+        txtAddress.requestFocus();
+    }
+
+    public void AddressOnAction(ActionEvent actionEvent) {
+        txtContact.requestFocus();
+    }
+
+    public void ContactOnAction(ActionEvent actionEvent) {
+        picDate.requestFocus();
+    }
+
+    public void DobOnAction(ActionEvent actionEvent) {
+        comGender.requestFocus();
+        Background.fill(Color.GREEN);
+    }
+
+
+    public void GenderOnAction(ActionEvent actionEvent) {
+        txtResId.requestFocus();
+    }
+
+    public void DateOnAction(ActionEvent actionEvent) {
+        txtEndDate.requestFocus();
+    }
+
+    public void EndDateOnAction(ActionEvent actionEvent) {
+        comRoomType.requestFocus();
+    }
+
+    public void ResIdOnAction(ActionEvent actionEvent) {
+        txtDate.requestFocus();
+    }
+
+    public void KemonyeOnAction(ActionEvent actionEvent) {
+        txtAmount.requestFocus();
 
     }
 }

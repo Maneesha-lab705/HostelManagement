@@ -46,7 +46,7 @@ public class ReservationBOImpl implements ReservationBO {
         if (isSaveStudent) {
             boolean isReserved =reservationDao.save(reservation);
             if (isReserved){
-                boolean isPaid=billDAO.save(new Bill(billDTO.getPaymentId(),billDTO.getKeymony(),billDTO.getAmount(),billDTO.getBalance(),reservation));
+                boolean isPaid=billDAO.save(new Bill(billDTO.getPaymentId(),billDTO.getKeymony(),billDTO.getAmount(),billDTO.getBalance()));
                 if (isPaid){
                     return true;
                 }
@@ -94,6 +94,11 @@ public class ReservationBOImpl implements ReservationBO {
     @Override
     public boolean delete(String id) {
         return roomDao.delete(new Room(id));
+    }
+
+    @Override
+    public String getResId() {
+        return reservationDao.getResId();
     }
 
 

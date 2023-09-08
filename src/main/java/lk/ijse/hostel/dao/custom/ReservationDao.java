@@ -13,7 +13,7 @@ public interface ReservationDao {
 
     List<Reservation> getAll();
 
-    String getRoomId(String resId);
+    String getRoomId(String paymentId);
 
 
 }

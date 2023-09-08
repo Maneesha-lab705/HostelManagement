@@ -1,6 +1,8 @@
 package lk.ijse.hostel.util.task;
 
 import javafx.concurrent.Task;
+import javafx.stage.Stage;
+import lk.ijse.hostel.Main;
 import lk.ijse.hostel.util.FactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
