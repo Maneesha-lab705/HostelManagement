@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -15,6 +16,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import lk.ijse.hostel.bo.custom.LoginBO;
+import lk.ijse.hostel.bo.custom.impl.LogingBOImpl;
 import lk.ijse.hostel.util.FactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -36,14 +39,25 @@ public class LogingFromController implements Initializable {
     private double xOffset = 0;
     private double yOffset = 0;
 
+    LoginBO loginBO =new LogingBOImpl();
+
     @FXML
     void btnLogingOnAction(ActionEvent event) throws IOException {
-        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/DashBord.fxml"));
-        Scene scene = new Scene(anchorPane);
-        Stage stage = (Stage) root.getScene().getWindow();
-        stage.setScene(scene);
-        stage.centerOnScreen();
+        String userName=txtName.getText();
+        String password=txtPassword.getText();
 
+        boolean isConform=loginBO.serch(userName,password);
+        if (isConform){
+            AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/DashBord.fxml"));
+            Scene scene = new Scene(anchorPane);
+            Stage stage = (Stage) root.getScene().getWindow();
+            stage.setScene(scene);
+            stage.centerOnScreen();
+        }if (!isConform){
+            new Alert(Alert.AlertType.ERROR,"WRONG USER OR PASSWORD!").show();
+            txtPassword.setText("");
+            txtName.setText("");
+        }
 
     }
     private void handleMousePressed(MouseEvent mouseEvent) {

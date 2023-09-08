@@ -4,4 +4,6 @@ import lk.ijse.hostel.entity.User;
 
 public interface UserDAO {
     boolean save(User user);
+
+    boolean serch(String userName, String password);
 }
