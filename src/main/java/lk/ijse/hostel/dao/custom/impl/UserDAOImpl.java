@@ -28,11 +28,12 @@ public class UserDAOImpl implements UserDAO {
         Query query = session.createQuery(" FROM User WHERE userName = ?1 AND password= ?2");
         query.setParameter(1,userName);
         query.setParameter(2,password);
-        String roomList = String.valueOf(query.uniqueResult());
+        Object o = query.uniqueResult();
         transaction.commit();
         session.close();
 
-        return Boolean.parseBoolean(roomList);
-
+        if (o !=null){
+            return true;
+        }else return false;
     }
 }

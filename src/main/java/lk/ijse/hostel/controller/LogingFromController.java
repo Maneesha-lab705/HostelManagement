@@ -31,7 +31,7 @@ public class LogingFromController implements Initializable {
     @FXML
     private AnchorPane root;
     @FXML
-    private TextField txtName;
+    private TextField txtUserName;
 
     @FXML
     private TextField txtPassword;
@@ -43,10 +43,11 @@ public class LogingFromController implements Initializable {
 
     @FXML
     void btnLogingOnAction(ActionEvent event) throws IOException {
-        String userName=txtName.getText();
+        String userName=txtUserName.getText();
         String password=txtPassword.getText();
 
         boolean isConform=loginBO.serch(userName,password);
+        System.out.println(isConform);
         if (isConform){
             AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/DashBord.fxml"));
             Scene scene = new Scene(anchorPane);
@@ -56,7 +57,7 @@ public class LogingFromController implements Initializable {
         }if (!isConform){
             new Alert(Alert.AlertType.ERROR,"WRONG USER OR PASSWORD!").show();
             txtPassword.setText("");
-            txtName.setText("");
+            txtUserName.setText("");
         }
 
     }
@@ -100,10 +101,10 @@ public class LogingFromController implements Initializable {
     }
 
     public void userOnAction(ActionEvent actionEvent) {
+        txtPassword.requestFocus();
     }
 
-    public void passwordOnAction(ActionEvent actionEvent) {
-
+    public void passwordOnAction(ActionEvent actionEvent) throws IOException {
     }
 //    private void createDatabase() {
 //        Session session = FactoryConfiguration.getInstance().getSession();

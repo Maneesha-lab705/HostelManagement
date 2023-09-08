@@ -150,39 +150,49 @@ public class StudentReservationFormController implements Initializable {
     @FXML
     void btnSaveOnAction(ActionEvent event) {
 
-        if (conformId() || !conformId()) {
-            if (confermResId() || !confermResId()) {
-                String name = txtName.getText();
-                String sId = txtStId.getText();
-                String address = txtAddress.getText();
-                String contact = txtContact.getText();
-                LocalDate dob = picDate.getValue();
-                String gender = String.valueOf(comGender.getSelectionModel().getSelectedItem());
+        if (conformId()) {
+            if (confermResId()) {
+                if (conformContact()) {
+                    String name = txtName.getText();
+                    String sId = txtStId.getText();
+                    String address = txtAddress.getText();
+                    String contact = txtContact.getText();
+                    LocalDate dob = picDate.getValue();
+                    String gender = String.valueOf(comGender.getSelectionModel().getSelectedItem());
 
-                String resId = txtResId.getText();
-                LocalDate date = txtDate.getValue();
-                LocalDate endDate = txtEndDate.getValue();
-                String roomType = comRoomType.getSelectionModel().getSelectedItem();
-                String roomid = comRoomId.getSelectionModel().getSelectedItem();
+                    String resId = txtResId.getText();
+                    LocalDate date = txtDate.getValue();
+                    LocalDate endDate = txtEndDate.getValue();
+                    String roomType = comRoomType.getSelectionModel().getSelectedItem();
+                    String roomid = comRoomId.getSelectionModel().getSelectedItem();
 
-                Double amount = Double.valueOf(txtAmount.getText());
-                Double balance = Double.valueOf(txtBalance.getText());
-                Double keymony = Double.valueOf(txtKeyMony.getText());
+                    Double amount = Double.valueOf(txtAmount.getText());
+                    Double balance = Double.valueOf(txtBalance.getText());
+                    Double keymony = Double.valueOf(txtKeyMony.getText());
 
-                StudentDTO studentDTO = new StudentDTO(sId, name, address, contact, dob, gender);
-                RoomDto roomDto = new RoomDto(roomid);
-                ReservationDTO reservationDTO = new ReservationDTO(resId, date, endDate, roomType, roomDto, studentDTO);
-                BillDTO billDTO = new BillDTO(sId, keymony, amount, balance);
+                    StudentDTO studentDTO = new StudentDTO(sId, name, address, contact, dob, gender);
+                    RoomDto roomDto = new RoomDto(roomid);
+                    ReservationDTO reservationDTO = new ReservationDTO(resId, date, endDate, roomType, roomDto, studentDTO);
+                    BillDTO billDTO = new BillDTO(sId, keymony, amount, balance);
 
 
-                boolean isSave = reservationBO.save(reservationDTO, roomDto, studentDTO, billDTO);
-                if (isSave) {
-                    new Alert(Alert.AlertType.CONFIRMATION, "is Saved..").show();
-                    Clear();
-                } else {
+                    boolean isSave = reservationBO.save(reservationDTO, roomDto, studentDTO, billDTO);
+                    if (isSave) {
+                        new Alert(Alert.AlertType.CONFIRMATION, "is Saved..").show();
+                        Clear();
+                        txtStId.setBackground(Background.fill(Color.WHITE));
+                    } else {
+                        new Alert(Alert.AlertType.ERROR, "Duplicate Entity").show();
+                    }
+                } else if (!confermResId()) {
                     new Alert(Alert.AlertType.ERROR, "Duplicate Entity").show();
                 }
+            } else if (!conformId()) {
+                new Alert(Alert.AlertType.ERROR, "WRONG STUDENT ID ENTER CORRECT ONE!!").show();
             }
+        }else if (!conformContact()){
+            new Alert(Alert.AlertType.ERROR, "WRONG CONTACT  ENTER CORRECT ONE!!").show();
+
         }
 
     }
@@ -200,6 +210,15 @@ public class StudentReservationFormController implements Initializable {
             return true;
         }else {
             txtResId.setBackground(Background.fill(Color.RED));}
+        return false;
+    }
+    private boolean conformContact() {
+        if (txtContact.getText().matches("^[0-9]{10}$")) {
+            return true;
+        } else {
+            txtContact.setBackground(Background.fill(Color.RED));
+
+        }
         return false;
     }
     private void Clear() {
@@ -252,7 +271,15 @@ public class StudentReservationFormController implements Initializable {
     }
     @FXML
     void StIDOnAction(ActionEvent event) {
-        txtName.requestFocus();
+        if (conformId()){
+            txtName.requestFocus();
+            txtStId.setBackground(Background.fill(Color.WHITE));
+
+        }else if (!conformId()){
+            new Alert(Alert.AlertType.ERROR,"INCORRECT ID!").show();
+            txtStId.setBackground(Background.fill(Color.RED));
+        }
+
     }
 
     public void namaOnAction(ActionEvent actionEvent) {
@@ -264,7 +291,15 @@ public class StudentReservationFormController implements Initializable {
     }
 
     public void ContactOnAction(ActionEvent actionEvent) {
-        picDate.requestFocus();
+        if (conformContact()){
+            picDate.requestFocus();
+            txtContact.setBackground(Background.fill(Color.WHITE));
+        }else if (!conformContact()){
+            new Alert(Alert.AlertType.ERROR,"INCORRECT CONTACT!").show();
+            txtContact.setBackground(Background.fill(Color.RED));
+
+        }
+
     }
 
     public void DobOnAction(ActionEvent actionEvent) {
